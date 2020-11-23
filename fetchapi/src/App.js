@@ -5,12 +5,15 @@ function App() {
 
   const [repos, setRepos] = useState([{}]);
 
-  useEffect(async () => {
+  useEffect( () => {
 
-    const response = await fetch("https://api.github.com/users/samadakram/repos");
-    const data = await response.json();
-    console.log(data);
-    setRepos(data);
+    async function getRepos() {
+      const response = await fetch("https://api.github.com/users/samadakram/repos");
+      const data = await response.json();
+      console.log(data);
+      setRepos(data);
+    }
+    getRepos();
 
     // fetch('https://jsonplaceholder.typicode.com/todos/1')
     //   .then(response => response.json())
@@ -24,7 +27,7 @@ function App() {
       <ul>
         {repos.map((reposObj, index) => {
           return (
-            <li key={index}>{ reposObj.name }</li>
+            <li key={index}>{reposObj.name}</li>
           )
         })}
       </ul>

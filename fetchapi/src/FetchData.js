@@ -2,20 +2,22 @@ import React, { useEffect, useState } from 'react'
 
 export const FetchData = () => {
 
-    const [todos, setTodos] = useState({});
+    let data = {title: "Waiting for Network response"};
+
+    const [todos, setTodos] = useState(data);
     const [isFetching, setFetching] = useState(false);
 
     useEffect(() => {
 
-        setFetching(true);
-
+        
         async function processStart() {
+            setFetching(true);
             const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
             console.log("Response =>", response);
 
-            const data = await response.json();
-            console.log("Data =>", data);
-            setTodos(data);
+            const data2 = await response.json();
+            console.log("Data =>", data2);
+            setTodos(data2);
             setFetching(false);
         }
 

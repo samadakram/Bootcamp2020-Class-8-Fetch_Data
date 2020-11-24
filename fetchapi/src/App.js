@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import { FetchData } from './FetchData';
 
 function App() {
 
@@ -32,6 +33,8 @@ function App() {
           )
         })}
       </ul>
+
+      <FetchData />
     </div>
   );
 }

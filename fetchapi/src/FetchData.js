@@ -4,13 +4,18 @@ export const FetchData = () => {
 
     const [todos, setTodos] = useState({});
 
-    useEffect( async ()=> {
-        const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
-        console.log("Response =>", response);
+    useEffect(() => {
 
-        const data = await response.json();
-        console.log("Data =>", data);
-        setTodos(data);
+        async function processStart() {
+            const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+            console.log("Response =>", response);
+
+            const data = await response.json();
+            console.log("Data =>", data);
+            setTodos(data);
+        }
+
+        processStart();
 
     });
 
